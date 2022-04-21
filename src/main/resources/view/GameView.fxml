@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewController.GameViewController">
+   <children>
+      <BorderPane fx:id="gameBorderPane" layoutX="-2.0" layoutY="-2.0" prefHeight="406.0" prefWidth="606.0">
+         <bottom>
+            <Label fx:id="winnerLabel" alignment="CENTER" prefHeight="49.0" prefWidth="589.0" text="Keep playing there has not been a winner yet ..." BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="Consolas" size="22.0" />
+               </font>
+            </Label>
+         </bottom>
+         <top>
+            <HBox alignment="CENTER" prefHeight="73.0" prefWidth="606.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="turnLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="57.0" prefWidth="292.0" text="Turn for Player 1" textAlignment="CENTER">
+                     <font>
+                        <Font name="Consolas Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="63.0" prefWidth="28.0" />
+                  <ImageView fx:id="turnImageView" fitHeight="63.0" fitWidth="78.0" nodeOrientation="INHERIT" opacity="0.83" pickOnBounds="true" preserveRatio="true" />
+                  <Label prefHeight="53.0" prefWidth="32.0" />
+                  <Button fx:id="restartButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#restartButtonAction" prefHeight="59.0" prefWidth="225.0" text="RESTART" textAlignment="CENTER" textFill="#bc0606">
+                     <font>
+                        <Font name="Valken Regular" size="30.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </top></BorderPane>
+   </children>
+</AnchorPane>
