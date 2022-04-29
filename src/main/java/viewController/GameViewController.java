@@ -36,7 +36,7 @@ public class GameViewController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        Connect4Grid newConnect4Grid = new Connect4Grid(7,6,this);
+        Connect4Grid newConnect4Grid = new Connect4Grid(6,7,this);
         addConnect4Grid(newConnect4Grid.getGrid());
         changeTurnImageView(1);
     }
@@ -65,7 +65,7 @@ public class GameViewController implements Initializable{
 
     @FXML
     public void restartButtonAction(){
-        Connect4Grid newConnect4Grid = new Connect4Grid(7,6,this);
+        Connect4Grid newConnect4Grid = new Connect4Grid(6,7,this);
         addConnect4Grid(newConnect4Grid.getGrid());
         changeTurnImageView(1);
         turnLabel.setText("Turn for Player 1");

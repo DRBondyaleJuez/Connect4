@@ -40,8 +40,8 @@ public class Connect4Verifier {
 
         int connexionNumber = 4;
 
-        if(verticalScan(rowPosition,colPosition,connexionNumber)) return true;
         if(horizontalScan(rowPosition,colPosition,connexionNumber)) return true;
+        if(verticalScan(rowPosition,colPosition,connexionNumber)) return true;
         if(diagonalTopLeftScan(rowPosition,colPosition,connexionNumber)) return true;
         if (diagonalTopRightScan(rowPosition, colPosition, connexionNumber)) return true;
 
@@ -49,7 +49,7 @@ public class Connect4Verifier {
     }
 
     // This method would verify if there are 4 in a row in the vertical direction
-    private boolean verticalScan(int rowPosition, int colPosition, int counter){
+    private boolean horizontalScan(int rowPosition, int colPosition, int counter){
 
         if(counter == 1) return true;
 
@@ -58,12 +58,12 @@ public class Connect4Verifier {
         if(boardStateMatrix[rowPosition][colPosition-1] != player){
             return false;
         } else {
-            return verticalScan(rowPosition,colPosition-1,counter-1);
+            return horizontalScan(rowPosition,colPosition-1,counter-1);
         }
     }
 
     // This method would verify if there are 4 in a column in the horizontal direction
-    private boolean horizontalScan(int rowPosition, int colPosition, int counter){
+    private boolean verticalScan(int rowPosition, int colPosition, int counter){
 
         if(counter == 1){return true;}
 
@@ -72,11 +72,10 @@ public class Connect4Verifier {
         if(boardStateMatrix[rowPosition+1][colPosition] != player){
             return false;
         } else {
-            return horizontalScan(rowPosition+1,colPosition,counter-1);
+            return verticalScan(rowPosition+1,colPosition,counter-1);
         }
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////// TO CHECK////////////////////////////////////////////////////7
     // This method would verify if there are 4 in a column in the diagonal \ direction
     private boolean diagonalTopLeftScan(int row, int col,int counter){
 

@@ -49,36 +49,39 @@ public class Connect4Grid {
                 }
 
                 // Setting the action
-                currentImageView.setOnMouseClicked(cellClicked(i));
+                currentImageView.setOnMouseClicked(cellClicked(j));
 
                 // Adding to the gridPane
-                grid.add(currentImageView,i,j);
+                grid.add(currentImageView,j,i);
 
 
             }
 
         }
 
-
         return grid;
 
     }
 
-    private EventHandler<MouseEvent> cellClicked(int rowPosition){
+    private EventHandler<MouseEvent> cellClicked(int colunmIndex){
         return new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent mouseEvent){
                 if(winner == false) {
                     if (mouseEvent.getButton() == MouseButton.PRIMARY) {
                         int playingPlayer = gridController.getPlayer();
-                        int chipPlayedInColumnPosition = gridController.cellClicked(rowPosition);
-                        if (chipPlayedInColumnPosition > -1) {
+                        int chipPlayedInRow = gridController.cellClicked(colunmIndex);
+                        if (chipPlayedInRow > -1) {
                             try {
-                                Image imgFullGrid = new Image(getClass().getResource("/view/images/full1.png").toURI().toString());
-                                if (playingPlayer == 2) {
+
+                                Image imgFullGrid;
+                                if (playingPlayer == 1){
+                                    imgFullGrid = new Image(getClass().getResource("/view/images/full1.png").toURI().toString());
+                                } else {
                                     imgFullGrid = new Image(getClass().getResource("/view/images/full2.png").toURI().toString());
                                 }
-                                imageViewGrid[rowPosition][chipPlayedInColumnPosition].setImage(imgFullGrid);
+                                imageViewGrid[chipPlayedInRow][colunmIndex].setImage(imgFullGrid);
+
                             } catch (URISyntaxException e) {
                                 System.out.println("Malformed URI");
                                 e.printStackTrace();
