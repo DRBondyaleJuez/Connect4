@@ -22,3 +22,7 @@ buildNumber.properties
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+
+
+/src/main/resources/view/images/edition.pptx
+
