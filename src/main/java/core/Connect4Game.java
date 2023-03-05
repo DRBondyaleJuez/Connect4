@@ -4,20 +4,37 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import viewController.Connect4Grid;
-import viewController.GameViewController;
 
 import java.io.IOException;
 
+/**
+ * This the entry point of the application launch called by the main
+ * <p>
+ *     Inheriting from application requiring an implementation of abstract class start that allows the display of the view
+ * </p>
+ * @author Daniel R Bondyale Juez
+ * @version 1.0
+ */
 public class Connect4Game extends Application {
 
     private Stage mainStage;
 
+    /**
+     * This is the constructor. The mainStage attribute is instantiate.
+     */
     public Connect4Game() { mainStage = new Stage();}
 
-    @Override public void start(Stage stage)  throws Exception {
+    /**
+     * This is the implementation of the start abstract method of the extended class Application.
+     *  * <p>
+     *     This method is called during the execution of the Application class static method launch. It loads the FXMl files,
+     *     therefore, building its controllers too and the the built mainStage is displayed with the method show of the Stage class.
+     *  * </p>
+     * @param stage Stage object provided during the static launch method execution.
+     */
+    @Override
+    public void start(Stage stage)  {
         mainStage = stage;
         loadingMainScene();
 

@@ -1,11 +1,24 @@
 package model;
 
+/**
+ * Provides the objects that are used to verify if the game has a winner.
+ * <p>
+ *     The object is constructed with the matrix of integers corresponding to the matrix of cell values and player that
+ *     will be used to verify if it is the winner
+ * </p>
+ * @author Daniel R Bondyale Juez
+ * @version 1.0
+ */
 public class Connect4Verifier {
 
     private int[][] boardStateMatrix;
     private int player;
 
-
+    /**
+     * This is the constructor.
+     * @param board matrix of cells used to build the matrix of integers
+     * @param player the player whose victory will be check, either 1 or 2.
+     */
     public Connect4Verifier(Cell[][] board, int player) {
 
         int rowLength = board.length;
@@ -23,6 +36,18 @@ public class Connect4Verifier {
         this.player = player;
     }
 
+    /**
+     * Checks if the player assigned to the attribute player has won the game
+     * <p>
+     *     Goes through the integer matrix from bottom to the top, this is, starting from the row of the highest column
+     * position or index, the number of rows -1. When an integer with the value of the player is found the surrounding
+     * matrix position to the right and above are checked to see if they match until 4 continues are found. The matrix is
+     * covered until a row full of zeros is found. or the top row is checked without finding matches.
+     * </p>
+     * @return a boolean. False is a row full of zeros is found without any previous matches or all the rows have been
+     * verified without 4 connected. True if 4 connected matrix positions are found, this is, 4 contiguous matrix positions
+     * with the player number.
+     */
     public boolean isThereAWinner(){
         //Careful i starts being the columnPosition and j is the rowPosition
         for (int i = boardStateMatrix[0].length - 1; i > -1; i--) {
@@ -111,6 +136,5 @@ public class Connect4Verifier {
         }
         return true;
     }
-
 
 }
