@@ -25,4 +25,5 @@ buildNumber.properties
 
 # Documentation extra file
 /src/main/resources/view/images/edition.pptx
+/doc
 
