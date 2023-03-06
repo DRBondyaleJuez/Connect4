@@ -3,7 +3,6 @@
 ___
 
 ![GitHub contributors](https://img.shields.io/github/contributors/DRBondyaleJuez/Connect4)
-
 ![GitHub repo size](https://img.shields.io/github/repo-size/DRBondyaleJuez/Connect4)
 ___
 
