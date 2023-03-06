@@ -1,9 +1,12 @@
 # __CONNECT 4__
 ## A digital version of the classic 2 player game of the name [(wiki/Connect_Four)](https://en.wikipedia.org/wiki/Connect_Four). Learning project in Java.
 ___
-___
-![GitHub contributors](https://img.shields.io/github/contributors/DRBondyaleJuez/Connect4) 
+
+![GitHub contributors](https://img.shields.io/github/contributors/DRBondyaleJuez/Connect4)
+
 ![GitHub repo size](https://img.shields.io/github/repo-size/DRBondyaleJuez/Connect4)
+___
+
 ## __DESCRIPTION__
 This code was used as a training excercise to practice coding in java. The design pattern followed by the code is based on the Model-View-Controller [(MVC)](https://developer.mozilla.org/en-US/docs/Glossary/MVC) or more precisely Model-View-ViewController-Controller pattern.
 
