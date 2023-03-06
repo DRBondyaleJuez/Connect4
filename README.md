@@ -1,5 +1,5 @@
 # __CONNECT 4__
-## A digital version of the classic 2 player game of the name [(wiki/Connect_Four)](https://en.wikipedia.org/wiki/Connect_Four). Learning project in Java.
+## A digital version of the classic 2 player game with the same name [(wiki/Connect_Four)](https://en.wikipedia.org/wiki/Connect_Four). Learning project in Java.
 ___
 
 ![GitHub contributors](https://img.shields.io/github/contributors/DRBondyaleJuez/Connect4)
