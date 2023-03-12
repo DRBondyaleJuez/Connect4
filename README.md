@@ -1,4 +1,4 @@
-# __CONNECT 4__
+# 🔴🔴🔴🔴 __CONNECT 4__ 🟡🟡🟡🟡
 ## A digital version of the classic 2 player game with the same name [(wiki/Connect_Four)](https://en.wikipedia.org/wiki/Connect_Four). Learning project in Java.
 ___
 
