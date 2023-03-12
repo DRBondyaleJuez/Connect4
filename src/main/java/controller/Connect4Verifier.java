@@ -1,4 +1,6 @@
-package model;
+package controller;
+
+import model.Cell;
 
 /**
  * Provides the objects that are used to verify if the game has a winner.

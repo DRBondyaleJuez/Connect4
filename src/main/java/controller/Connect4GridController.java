@@ -1,7 +1,6 @@
 package controller;
 
 import model.Board;
-import model.Connect4Verifier;
 
 /**
  * Provides the object in charged of interactions between the Connect4Grid in the view and the grid model board object.
@@ -47,8 +46,8 @@ public class Connect4GridController {
 
 
     /**
-     * Ask the board attribute whether the current player has won the game, this is, has connected 4
-     * <p> Call the method hasThisPlayerWon of the board attribute </p>
+     * Verify whether the current player has won the game, this is, has connected 4
+     * <p> Build a Connect4Verifier object and return the result of calling the method isThereAWinner. </p>
      * @return a boolean. True if the current player has won or false if the current player is not the winner
      */
     public boolean isThereAWinner(){
