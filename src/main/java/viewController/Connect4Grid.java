@@ -72,10 +72,7 @@ public class Connect4Grid {
 
                 // Adding to the gridPane
                 grid.add(currentImageView,j,i);
-
-
             }
-
         }
 
         return grid;

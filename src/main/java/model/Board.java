@@ -41,7 +41,11 @@ public class Board {
         return cellMatrix[row][column];
     }
 
-/**
+    public Cell[][] getCellMatrix() {
+        return cellMatrix;
+    }
+
+    /**
  * Simulate the placement of a chip in a particular cell
  * <p> Playing a chip is simulated by changing the value in particular cell object from 0 to the playing player number 1 or 2.
  * Given a particular position in the row this method finds the lowest empty position in the column to place the chip, this means, change the value of the cell.
@@ -64,15 +68,6 @@ public class Board {
         return -1;
     }
 
-    /**
-     * Confirm whether the current player has won the game, this is, has connected 4
-     * <p> Creates an object Connect4Verifier to verify if there are 4 connected cells with the current player in their value </p>
-     * @return a boolean. True if the current player has won or false if the current player is not the winner
-     */
-    public boolean hasThisPlayerWon(){
-        Connect4Verifier verifier = new Connect4Verifier(cellMatrix, player);
-        return verifier.isThereAWinner();
-    }
 
     /**
      * Get the current value of the player attribute of the board object
