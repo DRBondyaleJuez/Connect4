@@ -1,4 +1,4 @@
-# __CONNECT 4__
+# 🔴🔴🔴🔴 __CONNECT 4__ 🟡🟡🟡🟡
 ## A digital version of the classic 2 player game with the same name [(wiki/Connect_Four)](https://en.wikipedia.org/wiki/Connect_Four). Learning project in Java.
 ___
 
@@ -13,7 +13,7 @@ The view is managed using the JavaFXML framework.
 
 <div style="text-align: center;">
 
-![Imagen1](https://user-images.githubusercontent.com/98281752/223218910-a7d34c5b-bb5a-40aa-af27-14a3cc55de19.png)
+![Imagen1](https://user-images.githubusercontent.com/98281752/224577245-0db6b552-275c-49cd-9773-451bf4beb88b.png)
 
 </div>
 
