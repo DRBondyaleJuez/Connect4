@@ -7,9 +7,11 @@ ___
 ___
 
 ## __DESCRIPTION__
-This code was used as a training exercise to practice coding in java. The design pattern followed by the code is based on the Model-View-Controller [(MVC)](https://developer.mozilla.org/en-US/docs/Glossary/MVC) or more precisely Model-View-ViewController-Controller pattern.
+This code was used as a training exercise to practice coding in java. 
 
-The view is managed using the JavaFXML framework.
+The design pattern followed by the code is based on the Model-View-Controller [(MVC)](https://developer.mozilla.org/en-US/docs/Glossary/MVC) or more precisely Model-View-ViewController-Controller pattern.
+
+The view is managed using the JavaFXML framework [(MVN repository link)](https://mvnrepository.com/artifact/org.openjfx/javafx-fxml).
 
 <div style="text-align: center;">
 
@@ -65,7 +67,7 @@ ___
 4. Clone the repository	
 
 	```bash 
-        git clone https://github.com/DRBondyaleJuez/FileCipherDecipher.git
+        git clone https://github.com/DRBondyaleJuez/Connect4.git
     ```
 
 5. Go to the project folder. Make sure the [pom.xml](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) is there.
