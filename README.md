@@ -7,7 +7,7 @@ ___
 ___
 
 ## __DESCRIPTION__
-This code was used as a training excercise to practice coding in java. The design pattern followed by the code is based on the Model-View-Controller [(MVC)](https://developer.mozilla.org/en-US/docs/Glossary/MVC) or more precisely Model-View-ViewController-Controller pattern.
+This code was used as a training exercise to practice coding in java. The design pattern followed by the code is based on the Model-View-Controller [(MVC)](https://developer.mozilla.org/en-US/docs/Glossary/MVC) or more precisely Model-View-ViewController-Controller pattern.
 
 The view is managed using the JavaFXML framework.
 
