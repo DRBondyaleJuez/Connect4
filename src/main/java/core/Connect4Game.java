@@ -48,8 +48,12 @@ public class Connect4Game extends Application {
         // getClass().getResource("/path/of/the/resource")
         FXMLLoader paneLoader = new FXMLLoader(getClass().getResource("/view/GameView.fxml"));
         Parent root = loadPaneLoader(paneLoader);
-        Scene newScene = new Scene(root);
-        mainStage.setScene(newScene);
+        if(root != null) {
+            Scene newScene = new Scene(root);
+            mainStage.setScene(newScene);
+        } else {
+            System.out.println("Unable to load pan loader root is NULL");
+        }
 
     }
 
@@ -60,7 +64,6 @@ public class Connect4Game extends Application {
             //Todo: log!!
             //Todo do something if the try fails
             System.out.println("FAIL!!! EXPLOTION!!!! BOOOOOOM");
-            System.out.println(e);
             return null;
         }
     }

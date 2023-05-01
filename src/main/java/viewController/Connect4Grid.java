@@ -1,5 +1,6 @@
 package viewController;
 
+import org.apache.commons.io.IOUtils;
 import controller.Connect4GridController;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
@@ -8,7 +9,9 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
-import java.net.URISyntaxException;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Provides the object in charged of building and managing the view section that correspond to the connect4 grid.
@@ -24,10 +27,10 @@ import java.net.URISyntaxException;
  */
 public class Connect4Grid {
 
-    private GridPane grid;
+    private final GridPane grid;
     private ImageView[][] imageViewGrid;
-    private Connect4GridController gridController;
-    private GameViewController gameController;
+    private final Connect4GridController gridController;
+    private final GameViewController gameController;
     private boolean winner;
 
     /**
@@ -58,14 +61,8 @@ public class Connect4Grid {
 
                 // Setting the empty initial image
                 ImageView currentImageView = imageViewGrid[i][j];
-
-                try {
-                    Image imgEmptyGrid = new Image(getClass().getResource("/view/images/empty.png").toURI().toString());
-                    currentImageView.setImage(imgEmptyGrid);
-                } catch (URISyntaxException e) {
-                    System.out.println("Malformed URI");
-                    e.printStackTrace();
-                }
+                Image imgEmptyGrid = getImageFromResources("/view/images/empty.png");
+                currentImageView.setImage(imgEmptyGrid);
 
                 // Setting the action
                 currentImageView.setOnMouseClicked(cellClicked(j));
@@ -79,46 +76,37 @@ public class Connect4Grid {
 
     }
 
-    private EventHandler<MouseEvent> cellClicked(int colunmIndex){
-        return new EventHandler<MouseEvent>(){
-            @Override
-            public void handle(MouseEvent mouseEvent){
-                if(winner == false) {
-                    if (mouseEvent.getButton() == MouseButton.PRIMARY) {
-                        int playingPlayer = gridController.getPlayer();
-                        int chipPlayedInRow = gridController.cellClicked(colunmIndex);
-                        if (chipPlayedInRow > -1) {
-                            try {
+    private EventHandler<MouseEvent> cellClicked(int columnIndex){
+        return mouseEvent -> {
+            if(!winner) {
+                if (mouseEvent.getButton() == MouseButton.PRIMARY) {
+                    int playingPlayer = gridController.getPlayer();
+                    int chipPlayedInRow = gridController.cellClicked(columnIndex);
+                    if (chipPlayedInRow > -1) {
 
-                                Image imgFullGrid;
-                                if (playingPlayer == 1){
-                                    imgFullGrid = new Image(getClass().getResource("/view/images/full1.png").toURI().toString());
-                                } else {
-                                    imgFullGrid = new Image(getClass().getResource("/view/images/full2.png").toURI().toString());
-                                }
-                                imageViewGrid[chipPlayedInRow][colunmIndex].setImage(imgFullGrid);
+                        Image imgFullGrid;
+                        if (playingPlayer == 1){
+                            imgFullGrid = getImageFromResources("/view/images/full1.png");
+                        } else {
+                            imgFullGrid = getImageFromResources("/view/images/full2.png");
+                        }
+                        imageViewGrid[chipPlayedInRow][columnIndex].setImage(imgFullGrid);
 
-                            } catch (URISyntaxException e) {
-                                System.out.println("Malformed URI");
-                                e.printStackTrace();
-                            }
+                        //Change game labels if needed
 
-                            //Change game labels if needed
-
-                            //Winner Label
-                            if (gridController.isThereAWinner()) {
-                                gameController.changeWinnerLabel(playingPlayer);
-                                winner = true;
-                            } else {
-                                //Turn label
-                                gridController.changePlayer();
-                                gameController.changeTurnDisplay(gridController.getPlayer());
-                            }
-
-
+                        //Winner Label
+                        if (gridController.isThereAWinner()) {
+                            gameController.changeWinnerLabel(playingPlayer);
+                            winner = true;
+                        } else {
+                            //Turn label
+                            gridController.changePlayer();
+                            gameController.changeTurnDisplay(gridController.getPlayer());
                         }
 
+
                     }
+
                 }
             }
         };
@@ -131,6 +119,19 @@ public class Connect4Grid {
      */
     public GridPane getGrid() { return grid;}
 
+    private Image getImageFromResources(String path){
+        try {
+            InputStream imageInputStream = Connect4Grid.class.getResourceAsStream(path);
+            if(imageInputStream == null){
+                throw new IOException();
+            }
+            return new Image(new ByteArrayInputStream(IOUtils.toByteArray(imageInputStream)));
+        } catch (IOException e) {
+            System.out.println("Unable to retrieve empty grid image");
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 
 

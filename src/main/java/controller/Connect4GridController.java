@@ -13,7 +13,7 @@ import model.Board;
  */
 public class Connect4GridController {
 
-    private Board currentBoard;
+    private final Board currentBoard;
 
     /**
      * This is the constructor. The board dimensions are assigned during its construction as an attirbute of this controller.

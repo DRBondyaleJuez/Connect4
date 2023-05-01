@@ -10,7 +10,7 @@ package model;
  */
 public class Board {
 
-    private Cell[][] cellMatrix;
+    private final Cell[][] cellMatrix;
     private int player;
 
 
@@ -24,21 +24,10 @@ public class Board {
         for (int i = 0; i < nRow; i++) {
             for (int j = 0; j < nColumn; j++) {
 
-                cellMatrix[i][j] = new Cell(i,j);
+                cellMatrix[i][j] = new Cell();
             }
         }
         player = 1;
-    }
-
-    /**
-     * Get a particular cell object in a particular position
-     * <p> The cell object is selected based on row and column position provided which retrieves the object from the matrix or array of arrays. </p>
-     * @param row the row position this is row index from 0 to the number of rows minus 1.
-     * @param column the column position this is column index from 0 to the number of columns minus 1.
-     * @return the cell object in that position.
-     */
-    public Cell getCell(int row, int column){
-        return cellMatrix[row][column];
     }
 
     public Cell[][] getCellMatrix() {

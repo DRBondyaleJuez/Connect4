@@ -2,15 +2,17 @@ package viewController;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import org.apache.commons.io.IOUtils;
 
-import java.net.URISyntaxException;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -35,9 +37,6 @@ public class GameViewController implements Initializable{
 
     @FXML
     private Label winnerLabel;
-
-    @FXML
-    private Button restartButton;
 
     @FXML
     private ImageView turnImageView;
@@ -80,16 +79,11 @@ public class GameViewController implements Initializable{
     }
     private void changeTurnImageView(int player){
 
-        try {
-            Image chipImage = new Image(getClass().getResource("/view/images/chip1.png").toURI().toString());
-            if(player == 2) {
-                chipImage = new Image(getClass().getResource("/view/images/chip2.png").toURI().toString());
-            }
-            turnImageView.setImage(chipImage);
-        } catch (URISyntaxException e) {
-            System.out.println("Malformed URI");
-            e.printStackTrace();
+        Image chipImage = getImageFromResources("/view/images/chip1.png");
+        if(player == 2) {
+            chipImage = getImageFromResources("/view/images/chip2.png");
         }
+        turnImageView.setImage(chipImage);
     }
 
     /**
@@ -127,5 +121,19 @@ public class GameViewController implements Initializable{
         turnLabel.setTextFill(Color.color(0, 0, 0));
         winnerLabel.setText("Keep playing there has not been a winner yet ...");
         winnerLabel.setTextFill(Color.color(0, 0, 0));
+    }
+
+    private Image getImageFromResources(String path){
+        try {
+            InputStream imageInputStream = Connect4Grid.class.getResourceAsStream(path);
+            if(imageInputStream == null){
+                throw new IOException();
+            }
+            return new Image(new ByteArrayInputStream(IOUtils.toByteArray(imageInputStream)));
+        } catch (IOException e) {
+            System.out.println("Unable to retrieve empty grid image");
+            e.printStackTrace();
+            return null;
+        }
     }
 }

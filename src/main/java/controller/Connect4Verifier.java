@@ -13,8 +13,8 @@ import model.Cell;
  */
 public class Connect4Verifier {
 
-    private int[][] boardStateMatrix;
-    private int player;
+    private final int[][] boardStateMatrix;
+    private final int player;
 
     /**
      * This is the constructor.
@@ -70,9 +70,7 @@ public class Connect4Verifier {
         if(horizontalScan(rowPosition,colPosition,connexionNumber)) return true;
         if(verticalScan(rowPosition,colPosition,connexionNumber)) return true;
         if(diagonalTopLeftScan(rowPosition,colPosition,connexionNumber)) return true;
-        if (diagonalTopRightScan(rowPosition, colPosition, connexionNumber)) return true;
-
-        return false;
+        return diagonalTopRightScan(rowPosition, colPosition, connexionNumber);
     }
 
     // This method would verify if there are 4 in a row in the vertical direction

@@ -11,20 +11,14 @@ package model;
  */
 public class Cell {
 
-    private int row;
-    private int column;
     private int value;
 
     // This is each of the square boxes of the connect 4 game where each player plays
 
     /**
      * This is the constructor.
-     * @param row the row position in board from 0 to the height of the board minus one.
-     * @param column the column position in the board from 0 to the width of the board minus one.
      */
-    public Cell(int row, int column) {
-        this.row = row;
-        this.column = column;
+    public Cell() {
         value = 0;
     }
 
