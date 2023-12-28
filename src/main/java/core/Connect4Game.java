@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
@@ -17,6 +19,8 @@ import java.io.IOException;
  * @version 1.0
  */
 public class Connect4Game extends Application {
+
+    private static Logger logger = LogManager.getLogger(Connect4Game.class);
 
     private Stage mainStage;
 
@@ -60,16 +64,26 @@ public class Connect4Game extends Application {
         try {
             return paneLoader.load();
         } catch (IOException e) {
-            //Todo: log!!
-            System.out.println("The FXML file could not be loaded.");
+            // ---- LOG ----
+            String errorStackTrace = "";
+            for (StackTraceElement ste:e.getStackTrace()) {
+                errorStackTrace += "        " + ste + "\n";
+            }
+            logger.error("The FXML file (" + paneLoader.toString() + ") could not be loaded. ERROR:\n " + e + "\n" + "STACK TRACE:\n" + errorStackTrace );
+            return null;
+        }catch (RuntimeException e) {
+            // ---- LOG ----
+            StringBuilder errorStackTrace = new StringBuilder();
+            for (StackTraceElement ste:e.getStackTrace()) {
+                errorStackTrace.append("        ").append(ste).append("\n");
+            }
+            logger.error("The FXML file (" + paneLoader.toString() + ") could not be loaded. ERROR:\n " + e + "\n" + "STACK TRACE:\n" + errorStackTrace );
             return null;
         }
     }
 
     private void gracefulShutdown(){
-        // Show something to the user if apply
-        // save a new log if a apply
-        System.out.println("HERE");
+        logger.info("There has been a fatal error. I am shutting down.");
         System.exit(-1);
     }
 
