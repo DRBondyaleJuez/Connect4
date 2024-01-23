@@ -1,5 +1,6 @@
 package viewController;
 
+import core.Connect4Game;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -9,6 +10,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import org.apache.commons.io.IOUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -29,6 +32,7 @@ import java.util.ResourceBundle;
  */
 public class GameViewController implements Initializable{
 
+    private static Logger logger = LogManager.getLogger(GameViewController.class);
     @FXML
     private BorderPane gameBorderPane;
 
@@ -130,9 +134,8 @@ public class GameViewController implements Initializable{
                 throw new IOException();
             }
             return new Image(new ByteArrayInputStream(IOUtils.toByteArray(imageInputStream)));
-        } catch (IOException e) {
-            System.out.println("Unable to retrieve empty grid image");
-            e.printStackTrace();
+        } catch (IOException exception) {
+            logger.error("Could not find image at path: " + path + ". It could not be loaded. ERROR:\n ",  exception);
             return null;
         }
     }
